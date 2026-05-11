@@ -29,8 +29,8 @@ app.use(cors({origin: '*'}));
 // Index page (static HTML)
 app.route('/')
   .get(function (req, res) {
-    res.sendFile(process.cwd() + '/views/index.html');
-  }); 
+    res.sendFile(process.cwd() + '/views/index.html', { cacheControl: false });
+  });
 
 //For FCC testing purposes
 fccTestingRoutes(app);
