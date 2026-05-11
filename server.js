@@ -24,7 +24,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //For FCC testing purposes and enables user to connect from outside the hosting platform
-app.use(cors({origin: '*'})); 
+app.use(cors({
+  origin: '*',
+  exposedHeaders: ['X-Powered-By', 'X-Content-Type-Options', 'X-XSS-Protection', 'Cache-Control', 'Surrogate-Control', 'Pragma', 'Expires']
+}));
 
 // Index page (static HTML)
 app.route('/')
