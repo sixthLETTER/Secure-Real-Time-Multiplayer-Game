@@ -29,7 +29,13 @@ app.use(cors({origin: '*'}));
 // Index page (static HTML)
 app.route('/')
   .get(function (req, res) {
-    res.sendFile(process.cwd() + '/views/index.html', { cacheControl: false });
+    res.set({
+      'surrogate-control': 'no-store',
+      'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+      'pragma': 'no-cache',
+      'expires': '0'
+    });
+    res.sendFile(process.cwd() + '/views/index.html');
   });
 
 //For FCC testing purposes
